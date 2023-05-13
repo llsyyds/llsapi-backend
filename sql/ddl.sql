@@ -1,8 +1,12 @@
 -- 创建库
-create database if not exists my_db;
+create database if not exists llsapi;
 
 -- 切换库
-use my_db;
+use llsapi;
+
+-- 2,,llsyyds,,,admin,421e331113babe67614058204afd10d0,lls,abcdefgh,2023-04-22 04:19:51,2023-04-22 04:19:51,0
+-- 3,,lypyyds,,,user,421e331113babe67614058204afd10d0,f6b713ec2d010fae41d9038b9c6c194f,5a28038af6c9b16304faec669abee381,2023-04-25 02:44:19,2023-04-25 02:44:19,0
+
 
 -- 用户表
 create table if not exists user
@@ -14,6 +18,8 @@ create table if not exists user
     gender       tinyint                                null comment '性别',
     userRole     varchar(256) default 'user'            not null comment '用户角色：user / admin',
     userPassword varchar(512)                           not null comment '密码',
+    accessKey    varchar(512)                           not null comment 'accessKey',
+    secretKey    varchar(512)                           not null comment 'secretKey',
     createTime   datetime     default CURRENT_TIMESTAMP not null comment '创建时间',
     updateTime   datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete     tinyint      default 0                 not null comment '是否删除',

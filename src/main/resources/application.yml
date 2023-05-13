@@ -1,12 +1,12 @@
 spring:
   application:
-    name: springboot-init
+    name: llsapi-backend
   # DataSource Config
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/my_db
+    url: jdbc:mysql://121.4.219.216:3306/llsapi
     username: root
-    password: 123456
+    password: beloved1010
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -17,14 +17,16 @@ spring:
   # redis 配置
   redis:
     port: 6379
-    host: localhost
-    database: 0
+    host: 121.4.219.216
+    database: 10
+    password: gzpu44ry
 server:
   port: 7529
   servlet:
     context-path: /api
 mybatis-plus:
   configuration:
+    #开启驼峰命名映射功能（数据库中字段映射为java类中属性）
     map-underscore-to-camel-case: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
@@ -32,3 +34,19 @@ mybatis-plus:
       logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+llsapi:
+  client:
+    access-key: lls
+    secret-key: abcdefgh
+
+dubbo:
+  application:
+    name: dubbo-application-provider
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://121.4.71.213:8848?username=nacos&password=nacos
+
+
